@@ -25,12 +25,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/all_courses',[CoursesController::class,"getAllCourses"]);
-Route::get('/insturctors_all',[TeacherController::class,"getAllInstructors"]);
-Route::get('/news_all',[BlogController::class,"getAllNews"]);
-Route::get('/courses_all',[CoursesController::class,"getCoursesAll"]);
-Route::get('/course_detail/{id}',[CoursesController::class,"getCourseDetails"]);
-Route::get('/instructor_detail/{id}',[TeacherController::class,"getInstructorDetails"]);
-Route::get('/news_detail/{id}',[BlogController::class,"getNewsDetails"]);
-Route::post('/add_contacts',[ContactController::class,"addContact"]);
-Route::post('/add_student',[StudentController::class,"addStudent"]);
+Route::get('/all_courses', [CoursesController::class, "getAllCourses"]);
+Route::get('/insturctors_all', [TeacherController::class, "getAllInstructors"]);
+Route::get('/news_all', [BlogController::class, "getAllNews"]);
+Route::get('/courses_all', [CoursesController::class, "getCoursesAll"]);
+Route::get('/course_detail/{id}', [CoursesController::class, "getCourseDetails"]);
+Route::get('/instructor_detail/{id}', [TeacherController::class, "getInstructorDetails"]);
+Route::get('/news_detail/{id}', [BlogController::class, "getNewsDetails"]);
+Route::post('/add_contacts', [ContactController::class, "addContact"]);
+Route::post('/add_student', [StudentController::class, "addStudent"]);
+
+// Test API route for testing purposes
+Route::get('/test', function () {
+    return response()->json([
+        'success' => true,
+        'message' => 'API is working!',
+        'data' => [
+            'timestamp' => now(),
+        ],
+    ]);
+});
